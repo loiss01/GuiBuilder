@@ -22,7 +22,8 @@ public class GuiBuilder {
     public GuiBuilder(Integer slots, String title) {
         inv = Bukkit.createInventory(null,slots, title);
         items = new ArrayList<GuiItem>();
-//        Main.guimmanager.add
+        //Inicilize Class in your Main and register the Guimanager PlayerInteract even on the Pluginmanager
+        Main.guiManager.addBuilder(this);
     }
 
 

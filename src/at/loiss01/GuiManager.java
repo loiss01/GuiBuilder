@@ -24,11 +24,11 @@ public class GuiManager implements Listener {
 
 
         for (GuiBuilder builders: builders) {
-            if(builders.getInventory().getTitle().equalsIgnoreCase(e.getInventory().getTitle())){
+            if(builders.getInventory().equals(e.getInventory())){
                 for (GuiItem guiItem : builders.getItems()){
-                    if(guiItem.equals(e.getCurrentItem())){
+                    if(guiItem.getItemStack().equals(e.getCurrentItem())){
                         e.setCancelled(true);
-                        if(guiItem.getBiConsumer() == null){
+                        if(guiItem.getBiConsumer() != null){
                             guiItem.getBiConsumer().accept((Player) e.getWhoClicked(), e.getCurrentItem());
                         }
                         break;
@@ -38,6 +38,10 @@ public class GuiManager implements Listener {
             }
         }
 
+    }
+
+    public void addBuilder(GuiBuilder guiBuilder) {
+        builders.add(guiBuilder);
     }
 
 }
